@@ -1,0 +1,40 @@
+{
+    "driver": [
+        "4 in",
+        "4 in",
+        "0.75 in",
+        "0.75 in"
+    ],
+    "amp": "100 W",
+    "bluetooth": 5.0,
+    "wifi": [
+        "ac"
+    ],
+    "airplay": 2,
+    "spotify": true,
+    "chromecast": true,
+    "aux": [
+        3.5
+    ],
+    "toslink": true,
+    "usb": [
+        "mini"
+    ],
+    "microphones": 0,
+    "weight": 3600,
+    "power": {
+        "idle": "16 W"
+    },
+    "size": [
+        "335 mm",
+        "172 mm",
+        "155 mm"
+    ],
+    "price": {
+        "EUR": 379
+    },
+    "home": {
+        "en": "https://www.bluesound.com/products/pulse-mini/"
+    },
+    "links": []
+}

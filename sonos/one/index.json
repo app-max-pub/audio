@@ -1,0 +1,27 @@
+{
+    "driver": [
+
+    ],
+    "amp": "100 W",
+    "bluetooth": false,
+    "wifi": 3,
+    "airplay": 2,
+    "spotify": true,
+    "microphones": 6,
+    "weight": 1850,
+    "power": {
+
+    },
+    "size": {
+        "H": "161.45 mm",
+        "W": "119.7 mm",
+        "D": "119.7 mm"
+    },
+    "price": {
+        "EUR": 229,
+        "USD": 199
+    },
+    "links": [
+        "https://www.sonos.com/en-us/shop/one.html"
+    ]
+}

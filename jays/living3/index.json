@@ -1,0 +1,44 @@
+{
+    "driver": [
+        "4 in",
+        "4 in",
+        "0.75 in",
+        "0.75 in"
+    ],
+    "amp": [
+        "25 W",
+        "25 W",
+        "10 W",
+        "10 W"
+    ],
+    "bluetooth": 4.1,
+    "wifi": 5,
+    "apple": {
+        "airplay": 2
+    },
+    "spotify": {
+        "connect": true
+    },
+    "google": {
+        "cast": true
+    },
+    "aux": [
+        3.5
+    ],
+    "usb": [
+        "micro"
+    ],
+    "microphones": 0,
+    "weight": 3900,
+    "size": {
+        "W": "360 mm",
+        "D": "150 mm",
+        "H": "190 mm"
+    },
+    "price": {
+        "EUR": 379
+    },
+    "links": [
+        "https://www.jaysheadphones.com/speakers/s-living-three"
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "driver": [
+        "3.5 in",
+        "0.75 in"
+    ],
+    "amp": [
+        "20 W",
+        "10 W"
+    ],
+    "bluetooth": 4.1,
+    "wifi": 5,
+    "apple": {
+        "airplay": 2
+    },
+    "spotify": {
+        "connect": true
+    },
+    "google": {
+        "cast": true
+    },
+    "aux": [
+        3.5
+    ],
+    "usb": [
+        "micro"
+    ],
+    "microphones": 0,
+    "weight": 1800,
+    "size": [
+        "140 mm",
+        "140 mm",
+        "185 mm"
+    ],
+    "price": {
+        "EUR": 249
+    },
+    "links": [
+        "https://www.cnet.com/products/marshall-stanmore-speaker-wireless-04090931/"
+    ]
+}
