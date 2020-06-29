@@ -8,7 +8,7 @@ const XSL = new DOMParser().parseFromString(`<?xml version="1.0"?>
             <xsl:for-each select='//audio/*'>
                 <div>
                     <!-- <span><xsl:value-of select='.'/></span> -->
-                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/{.}/logo.png'/>
+                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/vendors/{.}/logo.png'/>
                 </div>
             </xsl:for-each>
         </div>
@@ -128,7 +128,7 @@ window.customElements.define('brand-list', class extends HTMLElement {
 
 // }); // will be appended later
         async INIT() {
-            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/`).then(x => x.json());
+            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/vendors/`).then(x => x.json());
             data = data.map(x=>x.name)
             console.log(this.json2xml('audio',data))
             this.insertAdjacentHTML('beforeend', this.json2xml('audio', data))

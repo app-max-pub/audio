@@ -8,7 +8,7 @@ const XSL = new DOMParser().parseFromString(`<?xml version="1.0"?>
             <xsl:for-each select='//audio/*'>
                 <div>
                     <!-- <span><xsl:value-of select='.'/></span> -->
-                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/{.}/main.png'/>
+                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/vendors/{//self}/{.}/main.png'/>
                 </div>
             </xsl:for-each>
         </div>
@@ -135,8 +135,9 @@ window.customElements.define('product-list', class extends HTMLElement {
 
         set vendor(v) { this.load(v); }
         async load(url) {
-            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/${url}/`).then(x => x.json());
+            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/vendors/${url}/`).then(x => x.json());
             data = data.map(x=>x.name).filter(x=>!x.endsWith('.png'))
+            data.self = url;
             console.log(this.json2xml('audio',data))
             this.insertAdjacentHTML('beforeend', this.json2xml('audio', data))
         }
