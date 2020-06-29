@@ -1,0 +1,40 @@
+<template>
+    <xsl:template match="/">
+
+        <div id='brandList'>
+            <xsl:for-each select='//audio/*'>
+                <div>
+                    <!-- <span><xsl:value-of select='.'/></span> -->
+                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/{.}/logo.png'/>
+                </div>
+            </xsl:for-each>
+        </div>
+
+    </xsl:template>
+</template>
+
+
+<style>
+#brandList div{height: 100px; width: 100px;}
+#brandList img{object-fit: contain; width:100%; height:100%;}
+</style>
+
+
+<script>
+    import './photo-block.tag.js'
+    new class {
+        async INIT() {
+            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/`).then(x => x.json());
+            data = data.map(x=>x.name)
+            console.log(this.json2xml('audio',data))
+            this.insertAdjacentHTML('beforeend', this.json2xml('audio', data))
+        }
+
+        json2xml(key, value, level = 0) {
+            if (key * 1 == key) key = 'a' + key;
+            if (typeof value == 'object') return `<${key}>${Object.entries(value).map(([k, v]) => this.json2xml(k, v)).join('\n')}</${key}>`;
+            else return `<${key}>${value}</${key}>`;
+        }
+
+    }
+</script>

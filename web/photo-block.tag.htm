@@ -1,0 +1,22 @@
+<template>
+    <img src='' />
+</template>
+
+
+<style>
+    :host {
+        display: inline-block;
+    }
+</style>
+
+
+<script>
+    new class {
+        WATCH = ['src'];
+        set src(v) {
+            this.$('img').setAttribute('src', v);
+        }
+
+
+    }
+</script>

@@ -5,8 +5,15 @@
     "amp": "100 W",
     "bluetooth": false,
     "wifi": 3,
-    "airplay": 2,
-    "spotify": true,
+    "apple": {
+        "airplay": 2
+    },
+    "spotify": {
+        "connect": true
+    },
+    "google": {
+        "cast": false
+    },
     "microphones": 6,
     "weight": 1850,
     "power": {
