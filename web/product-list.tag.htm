@@ -5,7 +5,15 @@
             <xsl:for-each select='//audio/*'>
                 <div>
                     <!-- <span><xsl:value-of select='.'/></span> -->
-                    <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/vendors/{//self}/{.}/main.png'/>
+                    <!-- <img src='https://raw.githubusercontent.com/max-pub/audio/gh-pages/vendors/{//self}/{.}/main.jpg' /> -->
+                    <div class='image'><img src='/vendors/{name(.)}/logo.png' /></div>
+
+                    <xsl:for-each select='./*'>
+                        <xsl:if test="not(@key = 'logo.png')">
+                            <xsl:value-of select='@key' />
+                            <div class='image'><img src='/vendors/{name(..)}/{name(.)}/{./*[@key!="index.json"][1]/@key}' /></div>
+                        </xsl:if>
+                    </xsl:for-each>
                 </div>
             </xsl:for-each>
         </div>
@@ -15,8 +23,32 @@
 
 
 <style>
-#brandList div{height: 100px; width: 100px;}
-#brandList img{object-fit: contain; width:100%; height:100%;}
+    #brandList {
+        height: 256px;
+        white-space: nowrap;
+    }
+
+    #brandList>div>div {
+        display: inline-block
+    }
+
+    .image {
+        height: 256px;
+        width: 256px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+    }
+    .image:hover{
+        border: 2px solid silver;
+        /* background: silver; */
+        cursor: pointer;
+    }
+    .image img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        /* background:silver; */
+    }
 </style>
 
 
@@ -26,17 +58,22 @@
         WATCH = ['vendor'];
         set vendor(v) { this.load(v); }
         async load(url) {
-            let data = await fetch(`https://api.github.com/repos/max-pub/audio/contents/vendors/${url}/`).then(x => x.json());
-            data = data.map(x=>x.name).filter(x=>!x.endsWith('.png'))
-            data.self = url;
-            console.log(this.json2xml('audio',data))
+            // let list = await fetch(`https://api.github.com/repos/max-pub/audio/contents/vendors/${url}/`).then(x => x.json());
+            let data = await fetch(`/vendors/index.json`).then(x => x.json());
+            console.log('products', data)
+            // data = {
+            //     list: list.map(x => x.name).filter(x => !x.endsWith('.png')),
+            //     self: url
+            // }
+            console.log(this.json2xml('audio', data))
             this.insertAdjacentHTML('beforeend', this.json2xml('audio', data))
         }
 
         json2xml(key, value, level = 0) {
+            let tag = key.replace(/\./g, '_').replace(/\s/g, '_')
             if (key * 1 == key) key = 'a' + key;
-            if (typeof value == 'object') return `<${key}>${Object.entries(value).map(([k, v]) => this.json2xml(k, v)).join('\n')}</${key}>`;
-            else return `<${key}>${value}</${key}>`;
+            if (typeof value == 'object') return `<${tag} key='${key}'>${Object.entries(value).map(([k, v]) => this.json2xml(k, v)).join('\n')}</${tag}>`;
+            else return `<${tag} key='${key}'>${value}</${tag}>`;
         }
 
     }
